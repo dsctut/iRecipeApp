@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/background"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/logo"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="iRecipe"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="130dp"
+            android:fontFamily="cursive"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feed Your Soul"
+            android:textSize="35dp"
+            android:textStyle="italic"
+            android:textAlignment="center"
+            android:textColor="#fff"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign in"
+            android:layout_weight="1"
+            android:textColor="#fff"
+            android:background="@drawable/signinbtn"
+            android:layout_margin="8dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sign Up"
+            android:background="@drawable/signupbtn"
+            android:textColor="#000"
+            android:layout_margin="8dp"/>
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>
