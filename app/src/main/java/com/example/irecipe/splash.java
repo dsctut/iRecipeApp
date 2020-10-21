@@ -14,5 +14,15 @@ public class splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        getSupportActionBar().hide();
+        Runnable run = new Runnable() {
+            @Override
+            public void run() {
+                startActivity(new Intent(splach.this, MainActivity.class));
+                finish();
+            }
+        };
+
+        new Handler().postDelayed(run,3000);
     }
 }
