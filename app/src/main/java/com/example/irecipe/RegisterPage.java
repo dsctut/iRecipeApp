@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RegisterPage extends AppCompatActivity {
