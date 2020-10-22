@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "224794121242",
-    "firebase_url": "https://irecipe-449f1.firebaseio.com",
-    "project_id": "irecipe-449f1",
-    "storage_bucket": "irecipe-449f1.appspot.com"
+    "project_number": "606204450660",
+    "firebase_url": "https://irecipe-4c64b.firebaseio.com",
+    "project_id": "irecipe-4c64b",
+    "storage_bucket": "irecipe-4c64b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:224794121242:android:3866e301a418ecf47c6da3",
+        "mobilesdk_app_id": "1:606204450660:android:977fd2d03ec3b60bcf4c71",
         "android_client_info": {
           "package_name": "com.example.irecipe"
         }
       },
       "oauth_client": [
         {
-          "client_id": "224794121242-1vbeugsi81eoljpadko5681pq9iurb5u.apps.googleusercontent.com",
+          "client_id": "606204450660-4dum2vt407i28ogb15qn1obl9qc3a530.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBVBccea1x2mUHK9G5E1ydDRIfhAtFWTug"
+          "current_key": "AIzaSyDJ_1LWniyAXPsqucup883UPbDie0Ve5jY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "224794121242-1vbeugsi81eoljpadko5681pq9iurb5u.apps.googleusercontent.com",
+              "client_id": "606204450660-4dum2vt407i28ogb15qn1obl9qc3a530.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
