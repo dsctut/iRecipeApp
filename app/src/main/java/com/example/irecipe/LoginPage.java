@@ -8,7 +8,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import java.nio.charset.CharacterCodingException;
+
 public class LoginPage extends AppCompatActivity {
+
+    EditText phone,password;
+    Button signIn;
+    CheckBox rememberMe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,9 +22,9 @@ public class LoginPage extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login_page);
 
-        EditText phone = findViewById(R.id.phone);
-        EditText password = findViewById(R.id.password);
-        Button signIn = findViewById(R.id.signInBtn);
-        CheckBox remember = findViewById(R.id.remember);
+         phone = (EditText) findViewById(R.id.phone);
+         password = (EditText)findViewById(R.id.password);
+         signIn = (Button)findViewById(R.id.signInBtn);
+         rememberMe = (CheckBox)findViewById(R.id.remember);
     }
 }
