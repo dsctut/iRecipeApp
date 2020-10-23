@@ -1,12 +1,28 @@
 package com.example.irecipe;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.irecipe.Users.Users;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import com.example.irecipe.Prevelant.prevalent;
+import com.example.irecipe.Users.Users;
 
 import java.nio.charset.CharacterCodingException;
 
@@ -26,5 +42,65 @@ public class LoginPage extends AppCompatActivity {
          password = (EditText)findViewById(R.id.password);
          signIn = (Button)findViewById(R.id.signInBtn);
          rememberMe = (CheckBox)findViewById(R.id.remember);
+
+         signIn.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+
+                 String Phone = phone.getText().toString();
+                 String Password = password.getText().toString();
+
+                 if (Phone.isEmpty())
+                 {
+                     Snackbar.make(view,"Phone Number cannot be left empty",Snackbar.LENGTH_LONG)
+                             .setAction("Action",null).show();
+                 }
+                 else
+                     if(Password.isEmpty())
+                 {
+                     Snackbar.make(view,"Password cannot be left empty",Snackbar.LENGTH_LONG)
+                             .setAction("Action",null).show();
+                 }
+                 else
+                     Access(Phone,Password);
+             }
+         });
+    }
+
+    private void Access(final String Phone,final String Password)
+    {
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot)
+            {
+                if (datasnapshot.child("Users").child(Phone).exists())
+                {
+                    Users userData = datasnapshot.child("Users").child(Phone).getValue(Users.class);
+                    if (userData.getPhone_Number().equals(Phone))
+                    {
+                        if (userData.getPassword().equals(Password)) {
+                            Toast.makeText(LoginPage.this, "Successfully logged in", Toast.LENGTH_LONG).show();
+                            prevalent.currentOnLineUsers = userData;
+                        }
+                        else
+                            Toast.makeText(LoginPage.this, "Incorrect password entered", Toast.LENGTH_LONG).show();
+                    }
+                    else
+                        Toast.makeText(LoginPage.this, "Incorrect Phone Number entered", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    Toast.makeText(LoginPage.this, Phone + " does not exist. Sign Up", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error)
+            {
+                Toast.makeText(LoginPage.this, "" + error, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

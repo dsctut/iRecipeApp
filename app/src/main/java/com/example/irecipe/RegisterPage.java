@@ -76,15 +76,15 @@ public class RegisterPage extends AppCompatActivity {
                             .setAction("Action", null).show();
                 }
                 else if(TextUtils.isEmpty(phone.getText().toString())){
-                    Snackbar.make(view, "Username cannot be left empty",Snackbar.LENGTH_LONG)
+                    Snackbar.make(view, "Phone Number cannot be left empty",Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
                 else if(TextUtils.isEmpty(email.getText().toString())){
-                    Snackbar.make(view, "Username cannot be left empty",Snackbar.LENGTH_LONG)
+                    Snackbar.make(view, "Email Address cannot be left empty",Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
                 else if(TextUtils.isEmpty(password.getText().toString())){
-                    Snackbar.make(view, "Username cannot be left empty",Snackbar.LENGTH_LONG)
+                    Snackbar.make(view, "Password cannot be left empty",Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
                 else{
