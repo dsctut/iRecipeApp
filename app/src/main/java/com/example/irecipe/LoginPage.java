@@ -13,7 +13,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.irecipe.Users.Users;
+
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,10 +21,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import com.example.irecipe.Prevelant.prevalent;
-import com.example.irecipe.Users.Users;
+import com.example.irecipe.Model.User;
+import com.example.irecipe.Prevalent.prevalent;
+
+
 
 import java.nio.charset.CharacterCodingException;
+
+
 
 public class LoginPage extends AppCompatActivity {
 
@@ -77,12 +81,13 @@ public class LoginPage extends AppCompatActivity {
             {
                 if (datasnapshot.child("Users").child(Phone).exists())
                 {
-                    Users userData = datasnapshot.child("Users").child(Phone).getValue(Users.class);
+
+                    User userData = datasnapshot.child("Users").child(Phone).getValue(User.class);
                     if (userData.getPhone_Number().equals(Phone))
                     {
                         if (userData.getPassword().equals(Password)) {
                             Toast.makeText(LoginPage.this, "Successfully logged in", Toast.LENGTH_LONG).show();
-                            prevalent.currentOnLineUsers = userData;
+                            prevalent.currentOnLineUser = userData;
                         }
                         else
                             Toast.makeText(LoginPage.this, "Incorrect password entered", Toast.LENGTH_LONG).show();

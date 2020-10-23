@@ -26,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
+import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.util.HashMap;
@@ -34,7 +35,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RegisterPage extends AppCompatActivity {
 
-    EditText username,phone,email,password;
+    EditText username, phone, email, password;
     CircleImageView img;
     Button submit;
 
@@ -47,8 +48,15 @@ public class RegisterPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register_page);
+
+        username = (EditText) findViewById(R.id.username);
+        phone = (EditText) findViewById(R.id.phone);
+        email = (EditText) findViewById(R.id.email);
+        password = (EditText) findViewById(R.id.password);
+        submit = (Button) findViewById(R.id.signUpBtn);
+
 
         mStorage = FirebaseStorage.getInstance().getReference().child("Profile_Pictures");
 
@@ -91,7 +99,7 @@ public class RegisterPage extends AppCompatActivity {
                     boolean isAvailable = available(phone.getText().toString());
 
                     if(isAvailable){
-                        Toast.makeText(RegisterPage.this, "Account with "+phone.getText().toString()+" already exist", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterPage.this, "Account with "+phone.getText().toString()+" already exists", Toast.LENGTH_SHORT).show();
                     }
                     else{
                         createAccount(view);
@@ -108,8 +116,8 @@ public class RegisterPage extends AppCompatActivity {
 
         RootRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.child(user).exists()){
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child(user).exists()){
                     User_Available = true;
                 }
                 else{
@@ -137,13 +145,14 @@ public class RegisterPage extends AppCompatActivity {
     }
 
     private void createAccount(final View view) {
-        if (imageUri != null){
-            final StorageReference imgRef = mStorage.child(phone.getText().toString()+".jpg");
+        if (imageUri != null)
+        {
+            final StorageReference imgRef = mStorage.child(phone.getText().toString() + ".jpg");
             uploadTask = imgRef.putFile(imageUri);
             uploadTask.continueWithTask(new Continuation() {
                 @Override
                 public Object then(@NonNull Task task) throws Exception {
-                    if(!task.isSuccessful()){
+                    if (!task.isSuccessful()) {
                         throw task.getException();
                     }
                     return imgRef.getDownloadUrl();
@@ -154,7 +163,11 @@ public class RegisterPage extends AppCompatActivity {
                     Uri downloadUrl = task.getResult();
                     myUrl = downloadUrl.toString();
 
+
+
+
                     DatabaseReference RootRef = FirebaseDatabase.getInstance().getReference().child("Users");
+
 
                     HashMap<String,Object>userData = new HashMap<>();
 
@@ -177,6 +190,8 @@ public class RegisterPage extends AppCompatActivity {
                             });
                 }
             });
-        }
     }
+
+
+}
 }
