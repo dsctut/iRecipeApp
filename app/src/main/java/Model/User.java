@@ -1,19 +1,17 @@
-package com.example.irecipe.Users;
+package Model;
 
-public class Users
-{
-    private String Username,Phone_Number,Email_Address,Password,Image;
+public class User {
+    private String Username, Phone_Number, Password, Email_Address,Image;
 
-    public Users()
-    {
+    public User(){
 
     }
 
-    public Users(String username, String phone_Number, String email_Address, String password, String image) {
+    public User(String username, String phone_Number, String password, String email_Address, String image) {
         Username = username;
         Phone_Number = phone_Number;
-        Email_Address = email_Address;
         Password = password;
+        Email_Address = email_Address;
         Image = image;
     }
 
@@ -33,20 +31,20 @@ public class Users
         Phone_Number = phone_Number;
     }
 
-    public String getEmail_Address() {
-        return Email_Address;
-    }
-
-    public void setEmail_Address(String email_Address) {
-        Email_Address = email_Address;
-    }
-
     public String getPassword() {
         return Password;
     }
 
     public void setPassword(String password) {
         Password = password;
+    }
+
+    public String getEmail_Address() {
+        return Email_Address;
+    }
+
+    public void setEmail_Address(String email_Address) {
+        Email_Address = email_Address;
     }
 
     public String getImage() {
@@ -57,4 +55,3 @@ public class Users
         Image = image;
     }
 }
-
