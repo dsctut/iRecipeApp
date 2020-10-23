@@ -87,7 +87,11 @@ public class LoginPage extends AppCompatActivity {
                     {
                         if (userData.getPassword().equals(Password)) {
                             Toast.makeText(LoginPage.this, "Successfully logged in", Toast.LENGTH_LONG).show();
+
+                            // // // // // // // // // // // // //
+                            Intent intent = new Intent(LoginPage.this,Dashboard.class);
                             prevalent.currentOnLineUser = userData;
+                            startActivity(intent);
                         }
                         else
                             Toast.makeText(LoginPage.this, "Incorrect password entered", Toast.LENGTH_LONG).show();

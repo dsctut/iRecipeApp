@@ -29,7 +29,7 @@ public class SlideActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         if (isOpenAlready())
         {
-            Intent intent=new Intent(SlideActivity.this,MainActivity.class);
+            Intent intent=new Intent(SlideActivity.this, WelcomePage.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }

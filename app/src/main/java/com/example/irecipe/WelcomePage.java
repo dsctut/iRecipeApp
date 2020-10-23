@@ -7,12 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class WelcomePage extends AppCompatActivity {
 
-    TextView TestNavDrawer;
+    TextView TestDashboard;
     Button signIn, signUp;
 
     @Override
@@ -20,18 +19,18 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.welcome_page);
         signIn = (Button)findViewById(R.id.signIn);
         signUp = (Button)findViewById(R.id.signUp);
 
 
-        //Test nav drawer layout
-        TestNavDrawer = (TextView)findViewById(R.id.testNavLayout);
-        TestNavDrawer.setOnClickListener(new View.OnClickListener() {
+        //Test nav dashboard
+        TestDashboard = (TextView)findViewById(R.id.testNavLayout);
+        TestDashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent navDrawer = new Intent(MainActivity.this, NavigationDrawer.class);
+                Intent navDrawer = new Intent(WelcomePage.this, Dashboard.class);
                 startActivity(navDrawer);
             }
         });
@@ -39,16 +38,16 @@ public class MainActivity extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, RegisterPage.class));
-                finish();
+                startActivity(new Intent(WelcomePage.this, RegisterPage.class));
+               // finish();
             }
         });
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,LoginPage.class));
-                finish();
+                startActivity(new Intent(WelcomePage.this,LoginPage.class));
+               // finish();
             }
         });
     }
