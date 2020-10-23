@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.ImageView;
 
 public class splash extends AppCompatActivity {
 
@@ -18,7 +17,7 @@ public class splash extends AppCompatActivity {
         Runnable run = new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(splash.this, MainActivity.class));
+                startActivity(new Intent(splash.this, WelcomePage.class));
                 finish();
             }
         };

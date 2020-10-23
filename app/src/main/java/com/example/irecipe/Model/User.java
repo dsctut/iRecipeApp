@@ -1,9 +1,10 @@
-package Model;
+package com.example.irecipe.Model;
 
 public class User {
-    private String Username, Phone_Number, Password, Email_Address,Image;
 
-    public User(){
+    private String Username, Phone_Number, Password, Email_Address, Image;
+
+    public User() {
 
     }
 
