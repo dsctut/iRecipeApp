@@ -47,7 +47,7 @@ public class LoginPage extends AppCompatActivity {
          phone = (EditText) findViewById(R.id.phone);
          password = (EditText)findViewById(R.id.password);
          signIn = (Button)findViewById(R.id.signInBtn);
-        // forgotPassword = (TextView) findViewById(R.id.forgotPassword);
+         forgotPassword = (TextView) findViewById(R.id.forgotPassword);
         isChef = (CheckBox)findViewById(R.id.isChef);
 
 
