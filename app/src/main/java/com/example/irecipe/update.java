@@ -110,7 +110,7 @@ public class update extends AppCompatActivity {
         databaseRef.child(prevalent.currentOnLineUser.getPhone_Number()).updateChildren(userData);
         startActivity(new Intent(update.this, Dashboard.class));
         Toast.makeText(this, "Profile Updated", Toast.LENGTH_SHORT).show();
-        finish();
+        //finish();
 
     }
 
@@ -125,7 +125,7 @@ public class update extends AppCompatActivity {
         } else {
             startActivity(new Intent(update.this, update.class));
             Toast.makeText(this, "Try Again", Toast.LENGTH_SHORT).show();
-            finish();
+            //finish();
         }
     }
 
@@ -184,7 +184,7 @@ public class update extends AppCompatActivity {
 
                                 startActivity(new Intent(update.this, update.class));
                                 Toast.makeText(update.this, "Successfully Updated!", Toast.LENGTH_SHORT).show();
-                                finish();
+                                //finish();
                             }else{
                                 progressDialog.dismiss();
                                 Toast.makeText(update.this, "Check Your Internet Connectivity", Toast.LENGTH_SHORT).show();
