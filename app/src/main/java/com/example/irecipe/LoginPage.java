@@ -28,7 +28,7 @@ import com.example.irecipe.Prevalent.prevalent;
 
 
 import java.nio.charset.CharacterCodingException;
-
+import java.util.HashMap;
 
 
 public class LoginPage extends AppCompatActivity {
@@ -36,6 +36,7 @@ public class LoginPage extends AppCompatActivity {
     EditText phone,password;
     Button signIn;
     TextView forgotPassword;
+    CheckBox isChef,isUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +48,11 @@ public class LoginPage extends AppCompatActivity {
          password = (EditText)findViewById(R.id.password);
          signIn = (Button)findViewById(R.id.signInBtn);
         // forgotPassword = (TextView) findViewById(R.id.forgotPassword);
+        isChef = (CheckBox)findViewById(R.id.isChef);
+        isUser = (CheckBox)findViewById(R.id.isUser);
 
-         signIn.setOnClickListener(new View.OnClickListener() {
+
+        signIn.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
 
@@ -78,39 +82,53 @@ public class LoginPage extends AppCompatActivity {
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot datasnapshot)
-            {
-                if (datasnapshot.child("Users").child(Phone).exists())
-                {
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                if (isChef.isChecked()) {
+                    if (datasnapshot.child("Chef").child(Phone).exists()){
+                        User userData = datasnapshot.child("Chef").child(Phone).getValue(User.class);
+                        if (userData.getPhone_Number().equals(Phone)) {
+                            if (userData.getPassword().equals(Password)) {
+                                Toast.makeText(LoginPage.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+                                prevalent.currentOnLineUser = userData;
+                                startActivity(new Intent(LoginPage.this, Dashboard.class));
+                                finish();
+                            } else {
+                                Toast.makeText(LoginPage.this, "Incorrect Password entered", Toast.LENGTH_SHORT).show(); }
+                        } else {
+                            Toast.makeText(LoginPage.this, "Incorrect Phone Number entered", Toast.LENGTH_SHORT).show(); }
+                    } else {
+                        Toast.makeText(LoginPage.this, " Incorrect box checked. Check user box or register", Toast.LENGTH_LONG).show(); }
+                } else if (isUser.isChecked()){
+                    if (datasnapshot.child("Users").child(Phone).exists()) {
 
-                    User userData = datasnapshot.child("Users").child(Phone).getValue(User.class);
-                    if (userData.getPhone_Number().equals(Phone))
-                    {
-                        if (userData.getPassword().equals(Password)) {
-                            Toast.makeText(LoginPage.this, "Successfully logged in", Toast.LENGTH_LONG).show();
+                        User userData = datasnapshot.child("Users").child(Phone).getValue(User.class);
+                        if (userData.getPhone_Number().equals(Phone)) {
+                            if (userData.getPassword().equals(Password)) {
+                                Toast.makeText(LoginPage.this, "Successfully logged in", Toast.LENGTH_LONG).show();
 
-                            // // // // // // // // // // // // //
-                            Intent intent = new Intent(LoginPage.this,Dashboard.class);
-                            prevalent.currentOnLineUser = userData;
-                            startActivity(intent);
-                        }
-                        else
-                            Toast.makeText(LoginPage.this, "Incorrect password entered", Toast.LENGTH_LONG).show();
+                                // // // // // // // // // // // // //
+                                Intent intent = new Intent(LoginPage.this, Dashboard.class);
+                                prevalent.currentOnLineUser = userData;
+                                startActivity(intent);
+                            } else
+                                Toast.makeText(LoginPage.this, "Incorrect password entered", Toast.LENGTH_LONG).show();
+                        } else
+                            Toast.makeText(LoginPage.this, "Incorrect Phone Number entered", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(LoginPage.this, Phone + " does not exist. Sign Up", Toast.LENGTH_LONG).show();
                     }
-                    else
-                        Toast.makeText(LoginPage.this, "Incorrect Phone Number entered", Toast.LENGTH_LONG).show();
                 }
-                else
-                {
-                    Toast.makeText(LoginPage.this, Phone + " does not exist. Sign Up", Toast.LENGTH_LONG).show();
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error)
-            {
-                Toast.makeText(LoginPage.this, "" + error, Toast.LENGTH_LONG).show();
-            }
+
+                @Override
+                public void onCancelled (@NonNull DatabaseError error){
+                    Toast.makeText(LoginPage.this, "" + error, Toast.LENGTH_LONG).show();
+                }
+
+
         });
+
     }
+
 }
