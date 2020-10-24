@@ -89,7 +89,7 @@ public class LoginPage extends AppCompatActivity {
                             Toast.makeText(LoginPage.this, "Successfully logged in", Toast.LENGTH_LONG).show();
 
                             // // // // // // // // // // // // //
-                            Intent intent = new Intent(LoginPage.this,Dashboard.class);
+                            Intent intent = new Intent(LoginPage.this,update.class);
                             prevalent.currentOnLineUser = userData;
                             startActivity(intent);
                         }
