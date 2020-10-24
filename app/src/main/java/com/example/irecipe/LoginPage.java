@@ -84,14 +84,16 @@ public class LoginPage extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
                 if (isChef.isChecked()) {
+
                     if (datasnapshot.child("Chef").child(Phone).exists()){
                         User userData = datasnapshot.child("Chef").child(Phone).getValue(User.class);
                         if (userData.getPhone_Number().equals(Phone)) {
                             if (userData.getPassword().equals(Password)) {
                                 Toast.makeText(LoginPage.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
                                 prevalent.currentOnLineUser = userData;
-                                startActivity(new Intent(LoginPage.this, Dashboard.class));
-                                finish();
+                                Intent intent = new Intent(LoginPage.this,Dashboard.class);
+                                intent.putExtra("isChef",true);
+                                startActivity(intent);
                             } else {
                                 Toast.makeText(LoginPage.this, "Incorrect Password entered", Toast.LENGTH_SHORT).show(); }
                         } else {
