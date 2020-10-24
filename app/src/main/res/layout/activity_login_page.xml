@@ -43,15 +43,6 @@
         android:text="Chef"
         android:textSize="20sp"
         android:textColor="@color/grey"/>
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/isUser"
-            android:paddingLeft="10dp"
-            android:layout_marginLeft="100dp"
-            android:text="User"
-            android:textSize="20sp"
-            android:textColor="@color/grey"/>
     </LinearLayout>
 
     <LinearLayout

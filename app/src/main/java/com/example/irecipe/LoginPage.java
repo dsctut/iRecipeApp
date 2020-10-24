@@ -36,7 +36,7 @@ public class LoginPage extends AppCompatActivity {
     EditText phone,password;
     Button signIn;
     TextView forgotPassword;
-    CheckBox isChef,isUser;
+    CheckBox isChef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class LoginPage extends AppCompatActivity {
          signIn = (Button)findViewById(R.id.signInBtn);
         // forgotPassword = (TextView) findViewById(R.id.forgotPassword);
         isChef = (CheckBox)findViewById(R.id.isChef);
-        isUser = (CheckBox)findViewById(R.id.isUser);
+
 
 
         signIn.setOnClickListener(new View.OnClickListener() {
@@ -97,8 +97,8 @@ public class LoginPage extends AppCompatActivity {
                         } else {
                             Toast.makeText(LoginPage.this, "Incorrect Phone Number entered", Toast.LENGTH_SHORT).show(); }
                     } else {
-                        Toast.makeText(LoginPage.this, " Incorrect box checked. Check user box or register", Toast.LENGTH_LONG).show(); }
-                } else if (isUser.isChecked()){
+                        Toast.makeText(LoginPage.this, Phone + " Is not a chef ", Toast.LENGTH_LONG).show(); }
+                } else {
                     if (datasnapshot.child("Users").child(Phone).exists()) {
 
                         User userData = datasnapshot.child("Users").child(Phone).getValue(User.class);
