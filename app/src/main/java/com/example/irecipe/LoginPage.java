@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -34,7 +35,7 @@ public class LoginPage extends AppCompatActivity {
 
     EditText phone,password;
     Button signIn;
-    CheckBox rememberMe;
+    TextView forgotPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class LoginPage extends AppCompatActivity {
          phone = (EditText) findViewById(R.id.phone);
          password = (EditText)findViewById(R.id.password);
          signIn = (Button)findViewById(R.id.signInBtn);
-         rememberMe = (CheckBox)findViewById(R.id.remember);
+        // forgotPassword = (TextView) findViewById(R.id.forgotPassword);
 
          signIn.setOnClickListener(new View.OnClickListener() {
              @Override

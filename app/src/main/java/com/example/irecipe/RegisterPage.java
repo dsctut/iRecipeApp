@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.Continuation;
@@ -37,6 +38,7 @@ public class RegisterPage extends AppCompatActivity {
 
     EditText username, phone, email, password;
     CircleImageView img;
+    ImageView backArrow;
     Button submit;
 
     private StorageReference mStorage;
@@ -51,13 +53,6 @@ public class RegisterPage extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register_page);
 
-        username = (EditText) findViewById(R.id.username);
-        phone = (EditText) findViewById(R.id.phone);
-        email = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password);
-        submit = (Button) findViewById(R.id.signUpBtn);
-
-
         mStorage = FirebaseStorage.getInstance().getReference().child("Profile_Pictures");
 
         img = findViewById(R.id.image);
@@ -66,6 +61,15 @@ public class RegisterPage extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         submit = findViewById(R.id.signUpBtn);
+        backArrow = findViewById(R.id.back_arrow);
+
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterPage.this,LoginPage.class));
+                finish();
+            }
+        });
 
         img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,6 +189,11 @@ public class RegisterPage extends AppCompatActivity {
                                         Snackbar.make(view,"Account Successfully Created",Snackbar.LENGTH_LONG)
                                                 .setAction("Action",null).show();
                                         startActivity(new Intent(RegisterPage.this,LoginPage.class));
+                                    }
+                                    else
+                                    {
+                                        Snackbar.make(view,"Account Successfully Created",Snackbar.LENGTH_LONG)
+                                                .setAction("Action",null).show();
                                     }
                                 }
                             });

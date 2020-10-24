@@ -11,18 +11,25 @@
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:background="@drawable/back_main"/>
+    <ImageView
+        android:id="@+id/back_arrow"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        android:src="@drawable/back_imageview"/>
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="70dp"
         android:layout_marginVertical="50dp"
         android:src="@drawable/user_profile"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_marginLeft="180dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="70dp"
         android:text="Welcome"
         android:textColor="#88FFFFFF"
@@ -30,69 +37,73 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:layout_marginLeft="180dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="100dp"
         android:text="Sign Up"
         android:textStyle="bold"
         android:textColor="#fff"
         android:textSize="35sp"/>
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="280dp"
-        android:background="#fff">
+        android:background="#fff"
+        android:layout_centerHorizontal="true">
     <EditText
-        android:id="@+id/username"
-        android:layout_width="350dp"
-        android:layout_height="70dp"
-        android:inputType="textPersonName"
-        android:layout_marginVertical="10dp"
-        android:hint="Username"
-        android:paddingLeft="30dp"
-        android:allowUndo="true"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/background_for_register_page"/>
+       android:id="@+id/username"
+       android:layout_width="300dp"
+       android:layout_height="70dp"
+       android:inputType="textPersonName"
+       android:layout_marginVertical="10dp"
+       android:hint="Username"
+       android:paddingLeft="30dp"
+       android:allowUndo="true"
+       android:layout_marginLeft="40dp"
+       android:background="@drawable/background_for_register_page"/>
+
 
         <EditText
             android:id="@+id/phone"
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="70dp"
             android:inputType="text"
             android:hint="Phone Number"
             android:paddingLeft="30dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="40dp"
             android:allowUndo="true"
             android:background="@drawable/background_for_register_page"/>
         <EditText
             android:id="@+id/email"
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="70dp"
             android:inputType="textEmailAddress"
             android:hint="Email Address"
             android:paddingLeft="30dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="40dp"
             android:layout_marginVertical="10dp"
             android:allowUndo="true"
             android:background="@drawable/background_for_register_page"/>
         <EditText
             android:id="@+id/password"
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="70dp"
             android:inputType="textPassword"
             android:hint="Password"
             android:paddingLeft="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginVertical="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginVertical="0dp"
             android:allowUndo="true"
             android:background="@drawable/background_for_register_page"/>
 
         <Button
             android:id="@+id/signUpBtn"
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="40dp"
             android:text="Sign Up"
             android:textColor="#fff"
             android:textAllCaps="false"

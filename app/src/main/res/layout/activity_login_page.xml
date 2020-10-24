@@ -38,38 +38,39 @@
         android:background="#fff">
     <EditText
         android:id="@+id/phone"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="70dp"
         android:inputType="text"
         android:layout_marginVertical="10dp"
         android:hint="Phone Number"
         android:paddingLeft="30dp"
         android:allowUndo="true"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="40dp"
         android:background="@drawable/background_for_register_page"/>
         <EditText
             android:id="@+id/password"
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="70dp"
             android:inputType="textPassword"
             android:layout_marginVertical="10dp"
             android:hint="Password"
             android:paddingLeft="30dp"
             android:allowUndo="true"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="40dp"
             android:background="@drawable/background_for_register_page"/>
-        <CheckBox
-            android:id="@+id/remember"
+        <TextView
+            android:id="@+id/forgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remember me"
+            android:text="Forgot Password?"
+            android:textColor="#5C000000"
             android:textSize="18dp"
             android:layout_marginLeft="200dp"/>
         <Button
             android:id="@+id/signInBtn"
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="40dp"
             android:text="Sign In"
             android:textColor="#fff"
             android:textAllCaps="false"
