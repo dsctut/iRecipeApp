@@ -84,7 +84,6 @@ public class Dashboard extends AppCompatActivity {
         if (UserRights.equals("Chef"))
         {
             menu.findItem(R.id.action_uploadRecipe).setVisible(true);
-
         }
         else
         {

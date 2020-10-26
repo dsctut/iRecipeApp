@@ -13,11 +13,11 @@ public class splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
         Runnable run = new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(splash.this, WelcomePage.class));
+                startActivity(new Intent(splash.this, SlideActivity.class));
                 finish();
             }
         };

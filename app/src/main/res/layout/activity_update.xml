@@ -104,6 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:background="@null"
+            android:inputType="textPassword"
             android:id="@+id/password"
             android:hint="Password"/>
         <View android:background="#00C853"
@@ -124,16 +125,7 @@
             android:text="Update"
             android:textColor="#fff" />
 
-        <TextView
-            android:id="@+id/dashmenu"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:text="Menu"
-            android:textColor="#000"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+
 
 
     </LinearLayout>
