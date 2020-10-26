@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.irecipe.Prevalent.prevalent;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -28,10 +29,16 @@ public class Dashboard extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
 
+    private String UserRights = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dashboard);
+
+        UserRights = getIntent().getStringExtra("isChef");
+
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -68,10 +75,22 @@ public class Dashboard extends AppCompatActivity {
 
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation_drawer, menu);
+
+        if (UserRights.equals("Chef"))
+        {
+            menu.findItem(R.id.action_uploadRecipe).setVisible(true);
+
+        }
+        else
+        {
+            menu.findItem(R.id.action_uploadRecipe).setVisible(false);
+        }
+
         return true;
     }
 
@@ -89,10 +108,15 @@ public class Dashboard extends AppCompatActivity {
         {
 
             case R.id.action_settings:
+
                 Intent settings = new Intent(Dashboard.this, update.class);
                 startActivity(settings);
                 return true;
-
+            case R.id.action_uploadRecipe:
+                //Toast.makeText(this, "" + UserRights, Toast.LENGTH_SHORT).show();
+                Intent uploadRecipe = new Intent(Dashboard.this, UploadRecipe.class);
+                startActivity(uploadRecipe);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 
@@ -100,4 +124,5 @@ public class Dashboard extends AppCompatActivity {
 
 
     }
+
 }

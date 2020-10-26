@@ -51,17 +51,17 @@
         android:orientation="vertical"
         android:layout_marginTop="350dp"
         android:background="#fff">
-    <EditText
-        android:id="@+id/phone"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:inputType="text"
-        android:layout_marginVertical="10dp"
-        android:hint="Phone Number"
-        android:paddingLeft="30dp"
-        android:allowUndo="true"
-        android:layout_marginLeft="40dp"
-        android:background="@drawable/background_for_register_page"/>
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:inputType="text"
+            android:layout_marginVertical="10dp"
+            android:hint="Phone Number"
+            android:paddingLeft="30dp"
+            android:allowUndo="true"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/background_for_register_page"/>
         <EditText
             android:id="@+id/password"
             android:layout_width="300dp"

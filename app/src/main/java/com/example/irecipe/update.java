@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.irecipe.Model.User;
 import com.example.irecipe.Prevalent.prevalent;
 import com.example.irecipe.R;
 import com.google.android.gms.tasks.Continuation;
@@ -44,7 +46,7 @@ public class update extends AppCompatActivity {
     private String Checker = "";
 
     CircleImageView DisplayProfilePic;
-    TextView ChangeProfilePicture, selector;
+    TextView ChangeProfilePicture, MenuBack;
     EditText FullNames, Password, Email;
     Button UpdateButton;
 
@@ -65,8 +67,18 @@ public class update extends AppCompatActivity {
         UpdateButton = (Button)findViewById(R.id.updateinputbtn);
         Email = (EditText)findViewById(R.id.emailText);
 
+        MenuBack = (TextView)findViewById(R.id.dashmenu);
+        MenuBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Reload();
+            }
+        });
+
 
         userInfoDisplay(FullNames, Password, DisplayProfilePic, Email);
+
+
         ChangeProfilePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,8 +104,6 @@ public class update extends AppCompatActivity {
             }
         });
 
-
-
     }
 
 
@@ -108,6 +118,7 @@ public class update extends AppCompatActivity {
         userData.put("Email_Address", Email.getText().toString());
 
         databaseRef.child(prevalent.currentOnLineUser.getPhone_Number()).updateChildren(userData);
+
         startActivity(new Intent(update.this, Dashboard.class));
         Toast.makeText(this, "Profile Updated", Toast.LENGTH_SHORT).show();
         //finish();
@@ -173,16 +184,19 @@ public class update extends AppCompatActivity {
                                 Uri downloadUrl = task.getResult();
                                 myUrl = downloadUrl.toString();
                                 DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("Users");
+
                                 HashMap<String,Object>userData = new HashMap<>();
                                 userData.put("Username", FullNames.getText().toString());
-                                userData.put("Address", Password.getText().toString());
+                                userData.put("Password", Password.getText().toString());
                                 userData.put("Email_Address", Email.getText().toString());
                                 userData.put("Image", myUrl);
+
                                 databaseRef.child(prevalent.currentOnLineUser.getPhone_Number()).updateChildren(userData);
 
                                 progressDialog.dismiss();
 
-                                startActivity(new Intent(update.this, update.class));
+                                startActivity(new Intent(update.this, Dashboard.class));
+
                                 Toast.makeText(update.this, "Successfully Updated!", Toast.LENGTH_SHORT).show();
                                 //finish();
                             }else{
@@ -200,7 +214,9 @@ public class update extends AppCompatActivity {
 
 
     private void userInfoDisplay( final EditText fullNames, final EditText password, final CircleImageView displayProfilePic, final EditText Email) {
+
         DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(prevalent.currentOnLineUser.getPhone_Number());
+
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -228,7 +244,30 @@ public class update extends AppCompatActivity {
 
     }
 
+    /*private void Reload(){
 
+        DatabaseReference reloadRef = FirebaseDatabase.getInstance().getReference().child("Users").child(prevalent.currentOnLineUser.getPhone_Number());
 
+        reloadRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.exists())
+                {
+                    User userData = snapshot.child("Chef").child(prevalent.currentOnLineUser.getPhone_Number()).getValue(User.class);
+
+                    Intent intent = new Intent(update.this, Dashboard.class);
+                    prevalent.currentOnLineUser = userData;
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }*/
 
 }

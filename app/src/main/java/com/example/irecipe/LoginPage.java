@@ -37,6 +37,7 @@ public class LoginPage extends AppCompatActivity {
     Button signIn;
     TextView forgotPassword;
     CheckBox isChef;
+    private String UserRights = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +49,19 @@ public class LoginPage extends AppCompatActivity {
          password = (EditText)findViewById(R.id.password);
          signIn = (Button)findViewById(R.id.signInBtn);
          forgotPassword = (TextView) findViewById(R.id.forgotPassword);
-        isChef = (CheckBox)findViewById(R.id.isChef);
+         isChef = (CheckBox)findViewById(R.id.isChef);
 
+         ////////////
+        isChef.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                if (isChef.isChecked())
+                {
+                    UserRights = "Chef";
+                }
+            }
+        });
 
         signIn.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -83,6 +94,7 @@ public class LoginPage extends AppCompatActivity {
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+
                 if (isChef.isChecked()) {
 
                     if (datasnapshot.child("Chef").child(Phone).exists()){
@@ -90,9 +102,9 @@ public class LoginPage extends AppCompatActivity {
                         if (userData.getPhone_Number().equals(Phone)) {
                             if (userData.getPassword().equals(Password)) {
                                 Toast.makeText(LoginPage.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-                                prevalent.currentOnLineUser = userData;
                                 Intent intent = new Intent(LoginPage.this,Dashboard.class);
-                                intent.putExtra("isChef",true);
+                                prevalent.currentOnLineUser = userData;
+                                intent.putExtra("isChef",UserRights);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(LoginPage.this, "Incorrect Password entered", Toast.LENGTH_SHORT).show(); }
@@ -111,6 +123,7 @@ public class LoginPage extends AppCompatActivity {
                                 // // // // // // // // // // // // //
                                 Intent intent = new Intent(LoginPage.this, Dashboard.class);
                                 prevalent.currentOnLineUser = userData;
+                                intent.putExtra("isChef", "User");
                                 startActivity(intent);
                             } else
                                 Toast.makeText(LoginPage.this, "Incorrect password entered", Toast.LENGTH_LONG).show();
@@ -120,8 +133,8 @@ public class LoginPage extends AppCompatActivity {
                         Toast.makeText(LoginPage.this, Phone + " does not exist. Sign Up", Toast.LENGTH_LONG).show();
                     }
                 }
-                }
 
+                }
 
                 @Override
                 public void onCancelled (@NonNull DatabaseError error){
